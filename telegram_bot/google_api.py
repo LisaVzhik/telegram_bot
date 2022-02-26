@@ -26,11 +26,12 @@ def auth():
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
                 'credentials.json', SCOPES)
-            creds = flow.run_local_server(port=8000)
-            # Save the credentials for the next run
-            with open('token.json', 'w') as token:
-                token.write(creds.to_json())
-            url = flow.authorization_url()
+            # creds = flow.run_local_server(port=8000)
+            # # Save the credentials for the next run
+            # with open('token.json', 'w') as token:
+            #     token.write(creds.to_json())
+            url = flow.authorized_session()
+            print(url)
             return url
 
 
