@@ -40,18 +40,18 @@ async def cmd_plan(message: types.Message):
     await message.answer(tasks[0], reply_markup=keyboards.tasks(tasks[1]))
 
 
+@dp.message_handler(commands=['google_calendar'])
+async def cmd_start(message: types.Message):
+    """Отправляет ссылку для авторизации"""
+    a = google_api.main()
+    await message.answer(google_api.main())
+
+
 @dp.message_handler(lambda message: message.text)
 async def cmd_new_task(message: types.Message):
     """ Создание новой задачи """
     commands.create_task(message)
     await message.answer("Записал")
-
-
-@dp.message_handler(commands=['google_calendar'])
-async def cmd_start(message: types.Message):
-    """Отправляет ссылку для авторизации"""
-    if google_api.auth():
-        await message.answer(f"Ссылка для авторизации:\n{google_api.auth()[0]}")
 
 
 @dp.callback_query_handler(simple_cal_callback.filter())
