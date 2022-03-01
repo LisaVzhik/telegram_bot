@@ -1,11 +1,8 @@
 from aiogram import Bot, types
-
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
-
 from aiogram.types import CallbackQuery
 from aiogram_calendar import simple_cal_callback, SimpleCalendar
-
 import asyncio
 
 import config
