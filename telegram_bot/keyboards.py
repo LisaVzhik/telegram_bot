@@ -2,6 +2,7 @@ from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, InlineKeyboardBut
 
 
 def commands():
+    """ Реплей клавиатура с командами """
     kb1 = ReplyKeyboardMarkup(resize_keyboard=True)
     button0 = KeyboardButton('/start')
     button1 = KeyboardButton('/plan')

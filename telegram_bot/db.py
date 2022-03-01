@@ -78,7 +78,7 @@ def list_tasks_current_date(user_id):
 
 
 def list_tasks_date(user_id):
-    """ Список задач на текущий день """
+    """ Список всех задач """
     conn = connect_db()
     cursor = cursor_db(conn)
     query = f"SELECT task FROM Tasks WHERE user_id=(SELECT id FROM Users WHERE user_id={user_id});"
@@ -94,7 +94,3 @@ def set_google_calendar(user_id):
     query = f"update Users set google_calendar=1 where user_id={user_id};"
     cursor.execute(query)
     conn.commit()
-
-
-if __name__ == '__main__':
-    print()

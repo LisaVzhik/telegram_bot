@@ -13,18 +13,10 @@ def pars_tasks(message):
     return list_tasks
 
 
-def update_tasks(events_list, list_tasks):
-    """ Возвращает новые задачи из гугл календаря"""
-    new_events = [event for event in events_list if event not in list_tasks]
-    return new_events
-
-
-def events(google_events):
+def google_events(g_events):
     """" Список задач из Google Calendar на текущий день """
-    if google_events:
-        events_list = [event['summary'] for event in google_events]
+    if g_events:
+        events_list = [f"{i + 1}. {v}" for i, v in enumerate(g_events)]
         return events_list
-
-
-if __name__ == '__main__':
-    print()
+    else:
+        return "Предстоящие мероприятия не найдены"

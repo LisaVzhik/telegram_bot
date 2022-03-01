@@ -1,5 +1,6 @@
 import db
 import parser
+import google_api
 
 
 def start(message):
@@ -39,6 +40,7 @@ def plan(message):
 
 
 def create_task(message):
+    """ Создание новой задачи """
     db.insert("Tasks", message)
     return
 
@@ -55,3 +57,9 @@ def delete(callback_query):
     user_id = callback_query.message.chat.id
     db.delete(task, user_id)
     return
+
+
+def google_calendar():
+    tasks = google_api.google_tasks()
+    result = parser.pars_tasks(tasks)
+    return result

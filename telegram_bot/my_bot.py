@@ -12,8 +12,7 @@ import config
 import commands
 import keyboards
 import db
-import parser
-import google_api
+
 
 loop = asyncio.get_event_loop()
 bot = Bot(token=config.token)
@@ -43,8 +42,8 @@ async def cmd_plan(message: types.Message):
 @dp.message_handler(commands=['google_calendar'])
 async def cmd_start(message: types.Message):
     """Отправляет ссылку для авторизации"""
-    a = google_api.main()
-    await message.answer(google_api.main())
+    google_tasks = commands.google_calendar()
+    await message.answer(f"Список задач из Google Calendar:\n{google_tasks}")
 
 
 @dp.message_handler(lambda message: message.text)
